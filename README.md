@@ -1,3 +1,20 @@
+# Completed application
+
+The app lets district users manage schools, save one-way transportation costs, and find the cheapest transfer paths through open schools. Resource inventory is marked as planned in the assignment and is outside this implementation.
+
+See [SETUP.md](SETUP.md) for running, testing, Docker, and submission instructions. The UML source diagrams are in `uml/` and can be viewed with a PlantUML extension.
+
+## Items the team must finish
+
+- Confirm the proposed schedule and enter all teammate names in source headers and the role table.
+- Schedule and complete the mandatory instructor checkpoint. It has not been completed or scheduled by this deliverable.
+- Protect `main` on your own GitHub repository and push the completed branches.
+- Perform the manual tests below and enter actual dates, times, and results.
+- Fill in your own honest self and teammate evaluations; ratings are intentionally blank.
+- Build and run the Docker image. Docker was unavailable in the preparation environment.
+
+The schedule below is an estimate starting October 4, not a record of completed work. Request-level verification passed; see [VALIDATION.md](VALIDATION.md). This does not replace the required manual testing.
+
 # Overview
 
 Your team has been hired to develop a web application for a small school district to manage its educational resources. The district oversees multiple schools and wants a centralized system to track school facilities, staff assignments, and inter-school resource sharing. Given the well-defined requirements and limited scope, your team has chosen the waterfall process model for this project.
@@ -50,11 +67,11 @@ Estimate a schedule for this project by completing the table below.
 
 |Phase|Task|Start|End|Duration|Deliverable|
 |---|---|---|---|---|---|
-|Modeling|Requirements Analysis|mm/dd/26|mm/dd/26|99 days|Use Case Diagram|
-|Modeling|Data Model|mm/dd/26|mm/dd/26|99 days|Class Diagram|
-|Construction|Coding|mm/dd/26|mm/dd/26|99 days|Code|
-|Construction|Testing|mm/dd/26|mm/dd/26|99 days|Test Report|
-|Deployment|Delivery|mm/dd/26|mm/dd/26|99 days|Final Commit/Push|
+|Modeling|Requirements Analysis|10/04/26|10/06/26|3 days|Use Case Diagram|
+|Modeling|Data Model|10/07/26|10/08/26|2 days|Class Diagram|
+|Construction|Coding|10/09/26|10/17/26|9 days|Code|
+|Construction|Testing|10/18/26|10/22/26|5 days|Test Report|
+|Deployment|Delivery|10/23/26|10/24/26|2 days|Final Commit/Push|
 
 ## Team Roles
 
@@ -62,7 +79,9 @@ Assign roles to each team member by completing the table below. A member may tak
 
 |Name|Role(s)|
 |--|--|
-|name|manager,developer,tester,documenter|
+|Brooke Andrie|developer, tester, documenter; confirm team assignments|
+|Teammate 2: enter name|proposed: manager, developer|
+|Teammate 3: enter name|proposed: tester, documenter|
 
 # Modeling Phase
 
@@ -132,8 +151,12 @@ At this stage, you are not expected to write automated tests. Instead, you shoul
 
 |Functionality Tested|Date|Time|Result|
 |--|--|--|--|
-|Sign Up|99/99/26|99:99|passed|
-|...|...|...|...|
+|Sign up and password confirmation|Enter date|Enter time|Pending manual test|
+|Login, invalid password, signout|Enter date|Enter time|Pending manual test|
+|Create, list, update, delete school|Enter date|Enter time|Pending manual test|
+|Add and update costs, reject negative costs|Enter date|Enter time|Pending manual test|
+|Indirect cheapest route and unreachable destination|Enter date|Enter time|Pending manual test|
+|Closed schools and deletion of related costs|Enter date|Enter time|Pending manual test|
 
 # Deployment Phase
 
@@ -154,7 +177,7 @@ Please reflect on both your own contributions and those of your teammates using 
 * Decision-Making: Decision-making is the process of choosing the best course of action among available options to achieve a goal. It provides direction and keeps the team moving forward.
 
 ```
-Your Name: <Last_First_Name>
+Your Name: Andrie_Brooke
 ```
 
 Rate your collaboration using: 

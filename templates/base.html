@@ -1,3 +1,4 @@
+<!-- Students: Brooke Andrie; add teammates before submission. -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +7,10 @@
     <title>{{ title }}</title>
 </head>
 <body>
+<h1>{{ title }}</h1>
+<nav><a href="{{ url_for('index') }}">Home</a> | <a href="{{ url_for('list_schools') }}">Schools</a></nav>
+{% for message in get_flashed_messages() %}<p role="alert">{{ message }}</p>{% endfor %}
+{% if form is defined %}{% for field in form %}{% for error in field.errors %}<p role="alert">{{ field.label.text }}: {{ error }}</p>{% endfor %}{% endfor %}{% endif %}
 {% block main %}
 {% endblock %}
 </body>

@@ -1,0 +1,8 @@
+<!-- Students: Brooke Andrie; add teammates before submission. -->
+{% extends 'base.html' %}
+{% block main %}
+<h2>Transfers from {{ school.name }}</h2>
+<p>Only open schools are used. Costs follow the saved transfer direction.</p>
+<table><tr><th>Destination</th><th>Total cost</th><th>Path</th></tr>
+{% for name, cost, path in results %}<tr><td>{{ name }}</td><td>{{ cost if cost is not none else 'Unreachable' }}</td><td>{{ path }}</td></tr>{% endfor %}</table>
+{% endblock %}
