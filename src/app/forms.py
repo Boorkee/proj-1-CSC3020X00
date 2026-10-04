@@ -1,20 +1,20 @@
 '''
 CSC3020 - Software Engineering Fundamentals
 Instructor: Thyago Mota
-Student(s):
+Student(s): Brooke Andrie; add teammates before submission
 Description: Project 1 - Schools
 '''
 
 from flask_wtf import FlaskForm
 from wtforms import *
-from wtforms.validators import DataRequired, InputRequired
+from wtforms.validators import DataRequired, InputRequired, EqualTo, NumberRange
 
 class SignUpForm(FlaskForm):
     id = StringField('Id', validators=[DataRequired()])
     name = StringField('Name', validators=[DataRequired()])
     about = TextAreaField('About')
     passwd = PasswordField('Password', validators=[DataRequired()])
-    passwd_confirm = PasswordField('Confirm Password', validators=[DataRequired()])
+    passwd_confirm = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('passwd', message='Passwords must match.')])
     submit = SubmitField('Confirm')
 
 class LoginForm(FlaskForm):
@@ -42,12 +42,12 @@ class SchoolDeleteForm(FlaskForm):
     # id = IntegerField('Id', render_kw = {'disabled': 'disabled'})
     name = StringField('Name', render_kw = {'disabled': 'disabled'})
     address = StringField('Address', render_kw = {'disabled': 'disabled'})
-    type = SelectField('Type', choices=['elementary', 'middle', 'high school'], render_kw = {'disabled': 'disabled'})
-    status = SelectField('Status', choices=['Open', 'Closed'], render_kw = {'disabled': 'disabled'})
+    type = SelectField('Type', choices=['elementary', 'middle', 'high school'], validate_choice=False, render_kw = {'disabled': 'disabled'})
+    status = SelectField('Status', choices=['Open', 'Closed'], validate_choice=False, render_kw = {'disabled': 'disabled'})
     submit = SubmitField('Confirm')
 
 class TransportationCostForm(FlaskForm):
     from_school_id = IntegerField('From', render_kw = {'disabled': 'disabled'})
     to_school_id = IntegerField('To', validators=[InputRequired()])
-    cost = IntegerField('Cost', validators=[DataRequired()])
+    cost = IntegerField('Cost', validators=[InputRequired(), NumberRange(min=0)])
     submit = SubmitField('Confirm')

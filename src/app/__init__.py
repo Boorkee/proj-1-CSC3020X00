@@ -1,40 +1,25 @@
-'''
-CSC3020 - Software Engineering Fundamentals
-Instructor: Thyago Mota
-Student(s):
-Description: Project 1 - Schools
-'''
-
-from flask import Flask
+"""School district application. Students: Brooke Andrie; add teammates before submission."""
 import os
-
-app = Flask('Schools Web App')
-# app.secret_key = os.environ['SECRET_KEY']
-app.secret_key = 'you will never know'
-
-# db initialization
+from pathlib import Path
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///schools.db'
-db = SQLAlchemy(app)
+from flask_login import LoginManager
 
-# models initialization
+root = Path(__file__).resolve().parents[2]
+app = Flask(__name__, template_folder=str(root / 'templates'), static_folder=str(root / 'static'))
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'local-development-key-change-for-deployment')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///schools.db')
+from flask_wtf.csrf import CSRFProtect
+CSRFProtect(app)
+db = SQLAlchemy(app)
+login_manager = LoginManager(app)
+login_manager.login_view = 'login'
 from app import models
-with app.app_context(): 
+with app.app_context():
     db.create_all()
 
-# login manager
-from flask_login import LoginManager
-login_manager = LoginManager()
-login_manager.init_app(app)
-
-from app.models import User
-
-# user_loader callback
 @login_manager.user_loader
-def load_user(id):
-    try: 
-        return db.session.query(User).filter(User.id==id).one()
-    except: 
-        return None
+def load_user(user_id):
+    return db.session.get(models.User, user_id)
 
 from app import routes

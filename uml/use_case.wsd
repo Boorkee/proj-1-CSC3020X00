@@ -1,3 +1,33 @@
-@startuml use_case
-
+@startuml
+' Students: Brooke Andrie; add teammates before submission.
+left to right direction
+actor "District User" as User
+rectangle "School District Application" {
+  usecase "Sign up" as Signup
+  usecase "Log in" as Login
+  usecase "Sign out" as Logout
+  usecase "List schools" as List
+  usecase "Create school" as Create
+  usecase "Update school" as Update
+  usecase "Delete school" as Delete
+  usecase "Add or update transfer cost" as Cost
+  usecase "Find cheapest transfer routes" as Routes
+  usecase "Check authentication" as Auth
+}
+User --> Signup
+User --> Login
+User --> Logout
+User --> List
+User --> Create
+User --> Update
+User --> Delete
+User --> Cost
+User --> Routes
+Logout ..> Auth : <<include>>
+List ..> Auth : <<include>>
+Create ..> Auth : <<include>>
+Update ..> Auth : <<include>>
+Delete ..> Auth : <<include>>
+Cost ..> Auth : <<include>>
+Routes ..> Auth : <<include>>
 @enduml
