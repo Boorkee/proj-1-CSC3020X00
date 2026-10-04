@@ -142,3 +142,5 @@ Your Name: Andrie_Brooke
 [ 5 ] I helped resolve disagreements constructively, promoting understanding and collaboration.
 [ 5 ] I contributed to or led decision-making processes with clarity, fairness, and consideration of team input.
 ```
+
+Note: many "final commits" are because I forgot to add something, however this is the final confirmed!
