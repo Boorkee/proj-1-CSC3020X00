@@ -1,3 +1,4 @@
+<!-- Students: Brooke Andrie; add teammates before submission. -->
 {% extends 'base.html' %}
 {% block main %}
     <table>
@@ -18,8 +19,8 @@
                     <td><A href="/schools/{{ school.id }}">{{ school.id }}</A></td>
                     <td>{{ school.name }}</td>
                     <td>{{ school.address }}</td>
-                    <td>{{ school._type }}</td>
-                    <td>{{ school.status }}</td>
+                    <td>{{ types[school._type] }}</td>
+                    <td>{{ statuses[school.status] }}</td>
                     <td>
                         <button type="button" class="button" onclick=confirmed_action("{{ url_for('delete_school', id=school.id) }}")>delete</button>
                         &nbsp;

@@ -1,4 +1,27 @@
-@startuml class
-left to right direction
-
+@startuml
+' Students: Brooke Andrie; add teammates before submission.
+class User {
+  id: String <<PK>>
+  name: String
+  about: String
+  passwd: LargeBinary
+}
+class School {
+  id: Integer <<PK>>
+  name: String
+  address: String
+  _type: Integer
+  status: Integer
+}
+class TransportationCost {
+  from_school_id: Integer <<PK, FK>>
+  to_school_id: Integer <<PK, FK>>
+  cost: Integer
+}
+School "1" -- "0..*" TransportationCost : from_school
+School "1" -- "0..*" TransportationCost : to_school
+note bottom of School
+_type: 0 elementary, 1 middle, 2 high school
+status: 0 open, 1 closed
+end note
 @enduml

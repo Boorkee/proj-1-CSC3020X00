@@ -1,7 +1,7 @@
 '''
 CSC3020 - Software Engineering Fundamentals
 Instructor: Thyago Mota
-Student(s):
+Student(s): Brooke Andrie; add teammates before submission
 Description: Project 1 - Schools
 '''
 

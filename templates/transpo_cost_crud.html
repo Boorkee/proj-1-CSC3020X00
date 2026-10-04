@@ -1,3 +1,4 @@
+<!-- Students: Brooke Andrie; add teammates before submission. -->
 {% extends 'base.html' %}
 {% block main %}
         <form action="" method="POST" novalidate>
@@ -7,4 +8,7 @@
             <p>{{ form.cost.label }} <br> {{ form.cost(size=5) }}</p>
             <p>{{ form.submit() }}</p>
         </form>
+<h2>Costs from {{ school.name }}</h2>
+<p>Transfers are one-way. Add the reverse transfer separately if needed. Enter a school ID from the Schools page. Saving an existing destination updates its cost.</p>
+<table><tr><th>Destination</th><th>Cost</th></tr>{% for cost in costs %}<tr><td>{{ cost.to_school.name }} ({{ cost.to_school_id }})</td><td>{{ cost.cost }}</td></tr>{% endfor %}</table>
 {% endblock %}
