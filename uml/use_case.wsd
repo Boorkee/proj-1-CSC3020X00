@@ -1,5 +1,5 @@
 @startuml
-' Students: Brooke Andrie; add teammates before submission.
+' Students: Brooke Andrie
 left to right direction
 actor "District User" as User
 rectangle "School District Application" {

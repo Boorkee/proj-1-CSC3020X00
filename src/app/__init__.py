@@ -1,4 +1,4 @@
-"""School district application. Students: Brooke Andrie; add teammates before submission."""
+"""School district application. Students: Brooke Andrie"""
 import os
 from pathlib import Path
 from flask import Flask

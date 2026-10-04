@@ -1,4 +1,4 @@
-"""School pages. Students: Brooke Andrie; add teammates before submission."""
+"""School pages. Students: Brooke Andrie"""
 from app import app, db, sp
 from app.models import User, School, TransportationCost
 from app.forms import SignUpForm, LoginForm, SchoolCreateForm, SchoolUpdateForm, SchoolDeleteForm, TransportationCostForm
