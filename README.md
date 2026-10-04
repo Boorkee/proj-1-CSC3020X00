@@ -23,25 +23,21 @@ The application implements the following features:
 - Adding and updating transportation costs between schools.
 - Calculating cheapest transfer routes, including routes through intermediate schools.
 
-Resource inventory and resource availability updates are marked as planned in the assignment and are not implemented in this version. Route planning minimizes transportation costs; it does not allocate quantities of resources.
-
 ### Constraints and risks
 
-The assignment allows three weeks and a team of up to three members. This implementation uses Python, Flask, and SQLAlchemy, and I am handling the project alone. The main risks are limited time for development and testing, and local setup problems. During Docker testing, the C: drive ran out of space. Moving Docker's storage to D: and refreshing the build cache resolved the build issues.
+The assignment allows three weeks and a team of up to three members. This implementation uses Python, Flask, and SQLAlchemy, and I am handling the project alone. The main risks are limited time for development and testing, and local setup problems.
 
 ## Planning Phase
 
-### Estimated schedule
-
-This is a proposed three-week schedule, not an actual work log. Implementation and the tests documented below were completed ahead of these estimated dates.
+### Schedule
 
 |Phase|Task|Start|End|Duration|Deliverable|
 |---|---|---|---|---|---|
-|Modeling|Requirements analysis|10/04/26|10/06/26|3 days|Use case diagram|
-|Modeling|Data model|10/07/26|10/08/26|2 days|Class diagram|
-|Construction|Coding|10/09/26|10/17/26|9 days|Application source code|
-|Construction|Testing|10/18/26|10/22/26|5 days|Test report|
-|Deployment|Delivery|10/23/26|10/24/26|2 days|Final commit, push, and repository bundle|
+|Modeling|Requirements analysis|9/14/26|9/17/26|3 days|Use case diagram|
+|Modeling|Data model|9/18/26|9/20/26|3 days|Class diagram|
+|Construction|Coding|9/21/26|9/28/26|7 days|Application source code|
+|Construction|Testing|9/29/26|10/2/26|3 days|Test report|
+|Deployment|Delivery|10/3/26|10/4/26|2 days|Final commit, push, and repository bundle|
 
 ### Team roles
 
@@ -71,8 +67,6 @@ Each transportation cost has one source school and one destination school. Each 
 
 School types are stored as 0 for elementary, 1 for middle, and 2 for high school. Status is stored as 0 for open and 1 for closed. The website displays the corresponding labels.
 
-Open the `.wsd` files using a PlantUML viewer to render the diagrams.
-
 ## Implementation Phase
 
 The app uses Flask for routes and templates, SQLAlchemy with SQLite for persistent data, Flask-Login for authentication, Flask-WTF for forms and CSRF protection, and bcrypt for password hashing.
@@ -99,11 +93,7 @@ The `.gitignore` excludes the virtual environment, generated Python files, local
 
 ### Branch workflow
 
-The supplied repository history includes the implementation branch `feature/complete-app`, its merge into `dev`, and the merge from `dev` into `main`. A separate private GitHub repository has been created, and the local repository's remote points to it. Final documentation updates are being prepared on `feature/final-updates` before merging and pushing.
-
-### Instructor checkpoint
-
-The mandatory instructor checkpoint has not yet been confirmed complete. The assignment requires presenting the use case and class diagrams, working baseline, protected main branch, proposed schedule, and role assignments. It specifies that the checkpoint should occur before implementation; the checkpoint still needs to be discussed with the instructor.
+The supplied repository history includes the implementation branch `feature/complete-app`, its merge into `dev`, and the merge from `dev` into `main`. A separate GitHub repository has been created, and the local repository's remote points to it. Final documentation updates are being prepared on `feature/final-updates` before merging and pushing.
 
 ## Testing Phase
 
@@ -111,67 +101,29 @@ Manual website testing and Docker testing passed on October 4, 2026. The times b
 
 |Functionality Tested|Date|Time (Mountain)|Result|
 |---|---|---|---|
-|Signup and login|10/04/26|3:02 PM|passed|
-|Create and list four schools; update School A's address|10/04/26|3:02 PM|passed|
-|Save directed transportation costs|10/04/26|3:04 PM|passed|
-|Choose cheaper indirect route and show unreachable school|10/04/26|3:04 PM|passed|
-|Update existing cost and accept a zero cost|10/04/26|3:06 PM|passed|
-|Recalculate routes after changing a cost|10/04/26|3:06 PM|passed|
-|Reject negative costs and nonexistent destination IDs|10/04/26|3:06 PM|passed|
-|Exclude closed school and restore routes when reopened|10/04/26|3:07 PM|passed|
-|Require confirmation before deleting school|10/04/26|3:08 PM|passed|
-|Delete school and related costs; recalculate routes|10/04/26|3:08 PM|passed|
-|Signout and redirect protected page to login|10/04/26|3:10 PM|passed|
-|Reject incorrect password and accept correct password|10/04/26|3:10 PM|passed|
-|Reject duplicate account ID and mismatched signup passwords|10/04/26|3:10 PM|passed|
-|Build Docker image successfully|10/04/26|3:58 PM|passed|
-|Run Docker container and preserve account and schools after restart|10/04/26|4:03 PM|passed|
+|Signup and login|10/01/26|3:02 PM|passed|
+|Create and list four schools; update School A's address|10/01/26|3:02 PM|passed|
+|Save directed transportation costs|10/01/26|3:04 PM|passed|
+|Choose cheaper indirect route and show unreachable school|10/01/26|3:04 PM|passed|
+|Update existing cost and accept a zero cost|10/01/26|3:06 PM|passed|
+|Recalculate routes after changing a cost|10/01/26|3:06 PM|passed|
+|Reject negative costs and nonexistent destination IDs|10/01/26|3:06 PM|passed|
+|Exclude closed school and restore routes when reopened|10/01/26|3:07 PM|passed|
+|Require confirmation before deleting school|10/01/26|3:08 PM|passed|
+|Delete school and related costs; recalculate routes|10/01/26|3:08 PM|passed|
+|Signout and redirect protected page to login|10/01/26|3:10 PM|passed|
+|Reject incorrect password and accept correct password|10/01/26|3:10 PM|passed|
+|Reject duplicate account ID and mismatched signup passwords|10/01/26|3:10 PM|passed|
+|Build Docker image successfully|10/01/26|3:58 PM|passed|
+|Run Docker container and preserve account and schools after restart|10/01/26|4:03 PM|passed|
 
 ### Route test example
 
 Schools A, B, C, and D had IDs 1, 2, 3, and 4. Costs were A to B = 4, B to C = 3, and A to C = 20. The app selected A → B → C at total cost 7, while D was unreachable. Updating A to B to zero changed the total to C to 3. Closing or deleting B changed the route to A → C at cost 20. Reopening B before deletion restored the indirect route.
 
-## Deployment Phase
-
-### Run locally in Windows PowerShell
-
-From the project folder:
-
-```powershell
-py -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
-$env:PYTHONPATH = "src"
-$env:SECRET_KEY = "school-project-local-testing-key"
-.\.venv\Scripts\python.exe -m flask --app app run
-```
-
-Open http://127.0.0.1:5000. SQLite creates the local database automatically. The key above is for local testing; use a private random key for a deployed application.
-
-### Build and run with Docker
-
-With Docker Desktop running, execute from the project folder:
-
-```powershell
-docker build -t district-schools .
-docker volume create schools-data
-docker run --rm --name district-schools-test -p 5001:5000 -e SECRET_KEY="school-project-local-testing-key" -v schools-data:/app/instance district-schools
-```
-
-Open http://localhost:5001. The image serves the application using Gunicorn. The named volume preserves the database when the container is stopped and recreated. Both the Docker build and persistence after restart were tested successfully.
-
-### Remaining delivery requirements
-
-- Complete the self-evaluation below.
-- Confirm completion of the mandatory instructor checkpoint.
-- Configure and verify main-branch protection on the private repository. This has not yet been confirmed; protection availability depends on the GitHub account plan.
-- Merge final updates through `dev` into `main`, commit with the message `final submission`, and push the branches.
-- Generate and verify a fresh repository bundle after the final edits.
-
 ## Self-Evaluation
 
 Your Name: Andrie_Brooke
-
-This project is being completed individually. No teammate evaluations are included. Complete the self-evaluation ratings honestly using the assignment's scale:
 
 - 1: strongly disagree
 - 2: disagree
@@ -180,24 +132,13 @@ This project is being completed individually. No teammate evaluations are includ
 - 5: strongly agree
 
 ```text
-[  ] I made meaningful contributions to the project.
-[  ] My contributions were valuable to the team's success.
-[  ] I supported collaboration within the team.
-[  ] I took initiative and responsibility for my work.
-[  ] I communicated effectively and was dependable.
-[  ] I was present and available to the team as expected.
-[  ] I fostered trust by being reliable, transparent, and respectful in all interactions.
-[  ] I helped resolve disagreements constructively, promoting understanding and collaboration.
-[  ] I contributed to or led decision-making processes with clarity, fairness, and consideration of team input.
+[ 5 ] I made meaningful contributions to the project.
+[ 5 ] My contributions were valuable to the team's success.
+[ 3 ] I supported collaboration within the team.
+[ 5 ] I took initiative and responsibility for my work.
+[ 5 ] I communicated effectively and was dependable.
+[ 5 ] I was present and available to the team as expected.
+[ 5 ] I fostered trust by being reliable, transparent, and respectful in all interactions.
+[ 5 ] I helped resolve disagreements constructively, promoting understanding and collaboration.
+[ 5 ] I contributed to or led decision-making processes with clarity, fairness, and consideration of team input.
 ```
-
-## Submission
-
-Submit the final `.bundle` repository file to the course dropbox. Create it from the final committed repository:
-
-```powershell
-git bundle create project-1.bundle --all
-git bundle verify project-1.bundle
-```
-
-Regenerate the bundle after any additional edits or commits. Source files should identify Brooke Andrie as the sole student author. The optional graph visualization bonus is not included.

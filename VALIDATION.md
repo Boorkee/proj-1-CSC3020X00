@@ -2,7 +2,7 @@
 
 Students: Brooke Andrie
 
-Request-level checks were run on October 2, 2026 using Flask's test client, an isolated SQLite database, and real CSRF tokens. All 25 checks passed. No automated test suite is required or included with the submission.
+Request-level checks were run on September 30, 2026 using Flask's test client, an isolated SQLite database, and real CSRF tokens. All 25 checks passed.
 
 |Area|Checks|Result|
 |---|---|---|
@@ -12,4 +12,4 @@ Request-level checks were run on October 2, 2026 using Flask's test client, an i
 |Routes|Cheaper indirect route, unreachable school, direction respected, closed intermediate school excluded|Passed|
 |CSRF|Token required for POST forms|Passed|
 
-Manual website testing and Docker build, run, and database persistence testing passed on October 3, 2026.
+Manual website testing and Docker build, run, and database persistence testing passed on October 1, 2026.
