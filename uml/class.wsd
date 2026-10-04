@@ -1,5 +1,5 @@
 @startuml
-' Students: Brooke Andrie; add teammates before submission.
+' Students: Brooke Andrie
 class User {
   id: String <<PK>>
   name: String

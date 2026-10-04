@@ -1,4 +1,4 @@
-# Students: Brooke Andrie; add teammates before submission.
+# Students: Brooke Andrie
 FROM python:3.12-slim
 WORKDIR /app
 COPY requirements.txt .

@@ -1,4 +1,4 @@
-# Students: Brooke Andrie; add teammates before submission.
+# Students: Brooke Andrie
 import sys
 from heapq import heappush, heappop
 
